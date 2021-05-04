@@ -31,8 +31,6 @@ fn main() {
 fn apt_update(){
     println!("Updating Kali Linux");
 Command::new("apt")
-    .arg("update")
-    .arg("&&")
     .arg("upgrade")
     .arg("y")
     .spawn()
@@ -51,13 +49,13 @@ Command::new("apt")
 
 //Grabbing tools from github 
 fn sec_lists() {
-    let path = "/home/bsdbandit/SecLists";
+    let path = "~/SecLists";
     DirBuilder::new()
         .recursive(true)
         .create(path).unwrap();
     assert!(fs::metadata(path).unwrap().is_dir());
     let url = "https://github.com/danielmiessler/SecLists.git";
-    let _repo = match Repository::clone(url, "/home/bsdbandit/SecLists"){
+    let _repo = match Repository::clone(url, "~/SecLists"){
         Ok(repo) => repo,
         Err(e) => panic!("failed to clone: {}", e),
 
@@ -65,52 +63,52 @@ fn sec_lists() {
 }
 
 fn mitm6_github() { 
-    let path = "/home/bsdbandit/mitm6";
+    let path = "~/mitm6";
     DirBuilder::new()
         .recursive(true)
         .create(path).unwrap();
     assert!(fs::metadata(path).unwrap().is_dir());
     let url = "https://github.com/fox-it/mitm6.git";
-    let _repo = match Repository::clone(url, "/home/bsdbandit/mitm6"){
+    let _repo = match Repository::clone(url, "~/mitm6"){
         Ok(repo) => repo,
         Err(e) => panic!("failed to clone: {}", e),
 };
 }
 
 fn impacket_github() { 
-    let path = "/home/bsdbandit/impacket";
+    let path = "~/impacket";
     DirBuilder::new()
         .recursive(true)
         .create(path).unwrap();
     assert!(fs::metadata(path).unwrap().is_dir());
     let url ="https://github.com/SecureAuthCorp/impacket.git";
-    let _repo = match Repository::clone(url, "/home/bsdbandit/impacket"){
+    let _repo = match Repository::clone(url, "~/impacket"){
         Ok(repo) => repo,
         Err(e) => panic!("failed to clone: {}", e),
 };
 }
 
 fn dirsearch_github() { 
-    let path = "/home/bsdbandit/dirsearch";
+    let path = "~/dirsearch";
     DirBuilder::new()
         .recursive(true)
         .create(path).unwrap();
     assert!(fs::metadata(path).unwrap().is_dir());
     let url ="https://github.com/maurosoria/dirsearch.git";
-    let _repo = match Repository::clone(url, "/home/bsdbandit/dirsearch"){
+    let _repo = match Repository::clone(url, "~/dirsearch"){
         Ok(repo) => repo,
         Err(e) => panic!("failed to clone: {}", e),
 };
 }
 
 fn crackmap_github() { 
-    let path = "/home/bsdbandit/CrackMapExec";
+    let path = "~/CrackMapExec";
     DirBuilder::new()
         .recursive(true)
         .create(path).unwrap();
     assert!(fs::metadata(path).unwrap().is_dir());
     let url ="https://github.com/byt3bl33d3r/CrackMapExec.git";
-    let _repo = match Repository::clone(url, "/home/bsdbandit/CrackMapExec"){
+    let _repo = match Repository::clone(url, "~/CrackMapExec"){
         Ok(repo) => repo,
         Err(e) => panic!("failed to clone: {}", e),
 };
@@ -122,7 +120,7 @@ fn mitm6_install() {
 Command::new("pip3")
             .arg("install")
             .arg("-r")
-            .arg("/home/bsdbandit/mitm6/requirements.txt")
+            .arg("~/mitm6/requirements.txt")
             .spawn()
             .expect("pip3 command failed to execute");
 }
@@ -131,7 +129,7 @@ fn dirsearch_install() {
 Command::new("pip3")
             .arg("install")
             .arg("-r")
-            .arg("/home/bsdbandit/dirsearch/requirements.txt")
+            .arg("~/dirsearch/requirements.txt")
             .spawn()
             .expect("pip3 command failed to execute");
 }
@@ -141,7 +139,7 @@ fn impacket_install() {
 Command::new("pip3")
             .arg("install")
             .arg("-r")
-            .arg("/home/bsdbandit/impacket/requirements.txt")
+            .arg("~/impacket/requirements.txt")
             .spawn()
             .expect("pip3 command failed to execute");
 }
@@ -150,7 +148,7 @@ fn crackmap_install() {
 Command::new("pip3")
             .arg("install")
             .arg("-r")
-            .arg("/home/bsdbandit/CrackMapExec/requirements.txt")
+            .arg("~/CrackMapExec/requirements.txt")
             .spawn()
             .expect("pip3 command failed to execute");
 }
