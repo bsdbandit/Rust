@@ -1,6 +1,6 @@
 //RustyBox is just a tool grabber it grabs my favorite tools from gitub and installs each tool
 //written by bsdbandit
-//March 19, 2021
+//Sept 11, 2021
 
 
 //Crates 
